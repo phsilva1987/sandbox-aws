@@ -104,7 +104,7 @@ p
 w
 
 
-## Como Ira aparecer
+## Como vai aparecer
 Device         Boot    Start        End    Sectors  Size Id Type
 /dev/nvme5n1p1          2048   31457279   31455232   15G 8e Linux LVM
 /dev/nvme5n1p2      31457280 1048575999 1017118720  485G 8e Linux LVM
@@ -113,18 +113,17 @@ Device         Boot    Start        End    Sectors  Size Id Type
 ![alt text](image-1.png)
 
 
-
-## Extendendo o VGS
+## Extendendo VGS
 vgextend vg_hanashared /dev/nvme5n1p2
 
 ![alt text](image-2.png)
 
-## Extendendoo LVS
+## Extendendo LVS
 lvextend -l +100%FREE /dev/mapper/vg_hanashared-lv_hanashared
 
 ![alt text](image-4.png)
 
-## Extende o volume
+## Extendendo o volume
 xfs_growfs -d /hana/shared
 
 ![alt text](image-3.png)
