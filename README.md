@@ -51,7 +51,7 @@ pvs
 
 ##Cria o VGS
 
-vgcreate vgtemporario /dev/nvme7n1p1
+vgcreate (vgtemporario) /dev/nvme7n1p1
 
 vgs
 
