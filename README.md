@@ -7,7 +7,7 @@ FORMATANDO DISCO e EXTENDENDO O DISCO - OFICIAL
 
 fdisk -l
 
-##Formata o disco -  /dev/nvme7n1
+##Formatando o disco -  /dev/nvme7n1
 
 fdisk /dev/nvme7n1
 
@@ -35,36 +35,50 @@ p
 
 w
 
-##Visualiza os discos
+##Visualizando os discos Novamente
 
 fdisk -l
 
 ##Cria pasta temporario
+
 mkdir /temporario
 
 ##Cria o PVS
+
 pvcreate /dev/nvme7n1p1 
+
 pvs
 
 ##Cria o VGS
+
 vgcreate vgtemporario /dev/nvme7n1p1
+
 vgs
 
 ##Cria LVS
+
 lvcreate -l 100%FREE vgtemporario -n lvtemporario
+
 lvs
 
 ##Formata o disco##
+
 mkfs.xfs /dev/vgtemporario/lvtemporario
 
 ##Vsualiza info par colocar no FSTAB
+
 blkid | grep vg_backup
+
 blkid /dev/vgtemporario/lvtemporario
 
 ##Add informacao no FSTAB
-vim /etc/fstabmkfs.
+
+vim /etc/fstab
+
 UUID="a7d6229d-8753-43a6-971a-1e95a6ddf6a9"   /backup      xfs     defaults,nofail 0 0
+
 mount -a
+
 df -hT
 
 
